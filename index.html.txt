@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Md. Shaharia Hossen | ETE Engineer · RUET</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Shaharia Hossen | ETE Engineer · RUET</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
   <style>
     * {
       margin: 0;
@@ -17,12 +16,14 @@
 
     body {
       font-family: 'Inter', sans-serif;
+      transition: background 0.3s ease, color 0.2s ease;
       background: var(--bg-primary);
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.5;
       scroll-behavior: smooth;
     }
 
+    /* Light / Dark variables */
     :root {
       --bg-primary: #0b1120;
       --bg-secondary: #111827;
@@ -48,21 +49,24 @@
       --navbar-blur: rgba(248, 250, 252, 0.9);
     }
 
+    /* global */
     .container {
-      max-width: 1200px;
-      margin: auto;
+      max-width: 1280px;
+      margin: 0 auto;
       padding: 0 1.5rem;
     }
 
+    /* navbar */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
       backdrop-filter: blur(12px);
       background: var(--navbar-blur);
+      z-index: 1000;
       padding: 1rem 0;
       border-bottom: 1px solid var(--border);
-      z-index: 1000;
+      transition: 0.3s;
     }
 
     .nav-content {
@@ -70,74 +74,102 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .logo {
       font-weight: 700;
-      color: var(--accent);
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--accent), #a5f3fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.8rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--text-primary);
+      font-weight: 500;
+      transition: 0.2s;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--accent);
     }
 
+    .theme-toggle {
+      background: var(--bg-secondary);
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.3rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+    }
+
+    /* sections */
     section {
-      padding: 90px 0;
+      padding: 90px 0 70px;
     }
 
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
+      padding-top: 70px;
     }
 
-    .profile-img {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: 2.8rem;
-      background: linear-gradient(90deg, #fff, var(--accent));
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #ffffff, var(--accent));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
     .typed-text {
-      color: var(--accent);
+      font-size: 1.8rem;
       margin: 1rem 0;
-      font-size: 1.3rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 1.2rem 0;
+      color: var(--text-secondary);
     }
 
     .btn-group {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
 
     .btn {
-      padding: 0.7rem 1.4rem;
-      border-radius: 30px;
-      text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 40px;
       font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
       display: inline-flex;
-      gap: 0.5rem;
       align-items: center;
+      gap: 0.5rem;
     }
 
     .btn-primary {
@@ -145,176 +177,430 @@
       color: #0f172a;
     }
 
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-3px);
+    }
+
     .btn-outline {
       border: 1px solid var(--accent);
       color: var(--accent);
     }
 
-    .grid {
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #0f172a;
+    }
+
+    /* section title */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    /* cards grid */
+    .grid-2, .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
     }
 
     .card {
       background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
       padding: 1.5rem;
-      border-radius: 20px;
       border: 1px solid var(--border);
+      transition: all 0.25s;
     }
 
-    .section-title {
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .card i {
       font-size: 2rem;
-      margin-bottom: 2rem;
-      position: relative;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
 
-    .section-title::after {
-      content: "";
-      width: 60px;
-      height: 3px;
-      background: var(--accent);
-      position: absolute;
-      bottom: -8px;
-      left: 0;
+    .skill-tag {
+      background: rgba(56, 189, 248, 0.15);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin: 0.2rem;
+    }
+
+    .cert-badge {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-top: 0.8rem;
+      display: flex;
+      gap: 0.5rem;
     }
 
     footer {
+      background: var(--bg-secondary);
       text-align: center;
       padding: 2rem;
-      background: var(--bg-secondary);
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* responsive */
+    @media (max-width: 780px) {
+      .hero-content h1 { font-size: 2.2rem; }
+      .typed-text { font-size: 1.3rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 60px 0; }
+      .container { padding: 0 1.2rem; }
+    }
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-weight: bold;
+      color: #0f172a;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .flex-center {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .youtube-badge {
+      background: #ff000020;
+      color: #ff4d4d;
+      border-radius: 30px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.8rem;
     }
   </style>
 </head>
-
 <body>
 
 <nav>
   <div class="container nav-content">
-    <div class="logo">Shaharia.dev</div>
+    <div class="logo"><i class="fas fa-microchip"></i> Shaharia.dev</div>
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#certificates">Certs</a>
+      <a href="#experience">Journey</a>
       <a href="#contact">Contact</a>
     </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Dark/Light mode">
+      <i class="fas fa-moon"></i>
+    </button>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="container">
-
-    <img src="profile.jpg" class="profile-img" alt="Profile">
-
-    <h1>Md. Shaharia Hossen</h1>
-
-    <div class="typed-text" id="typed"></div>
-
-    <p>ETE Undergraduate @ RUET | Data Analyst | YouTuber | Tutor</p>
-
-    <div class="btn-group">
-
-      <a href="https://github.com/shahariar0007" class="btn btn-primary" target="_blank">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-
-      <a href="https://youtube.com/@SmarterDotcom" class="btn btn-outline" target="_blank">
-        <i class="fab fa-youtube"></i> YouTube
-      </a>
-
-      <a href="https://www.linkedin.com/in/md-shaharia-hossen-a42419374" class="btn btn-outline" target="_blank">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-
-      <a href="https://www.facebook.com/s.shahariar.10" class="btn btn-outline" target="_blank">
-        <i class="fab fa-facebook"></i> Facebook
-      </a>
-
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="avatar">
+        <img src="profile.jpg" alt="Md. Shaharia Hossen">
+      </div>
+      <div class="hero-content">
+        <h1>Md. Shaharia Hossen</h1>
+        <div class="typed-text"><span id="typed"></span><span class="cursor">|</span></div>
+        <p class="hero-desc">
+          ETE undergrad @ RUET (3rd sem) | Data Analyst · YouTuber · Debater | Building tech & sharing knowledge.
+        </p>
+        <div class="btn-group">
+          <a href="https://github.com/shahariar0007" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://youtube.com/@SmarterDotcom" target="_blank" class="btn btn-outline"><i class="fab fa-youtube"></i> Smarter Dotcom</a>
+          <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-    <p>
-      I am an Electronics & Telecommunication Engineering student at RUET.
-      Passionate about data analysis, programming, electronics, and content creation.
-      I also run a YouTube channel and work as a tutor.
-    </p>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" style="background: var(--bg-secondary);">
-  <div class="container">
-    <h2 class="section-title">Skills</h2>
-
-    <div class="grid">
-      <div class="card">Programming: HTML, CSS, JS, Python, C++</div>
-      <div class="card">Data: Pandas, Matplotlib, Seaborn</div>
-      <div class="card">Electronics: Arduino, MATLAB</div>
-      <div class="card">Soft Skills: Debate, Teaching, Leadership</div>
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p style="font-size: 1.05rem; max-width: 800px;">
+        I’m a passionate 3rd-semester Electronics & Telecommunication Engineering (ETE) student at RUET, Rajshahi. 
+        My curiosity bridges hardware & software — from circuit analysis to Python data visualization. 
+        I run a YouTube channel <strong>"Smarter Dotcom"</strong> to share tech insights, work as a home tutor, and actively volunteer with the RUET Debating Club. 
+        I thrive on solving real-world problems with data and clean code.
+      </p>
+      <div class="flex-center" style="margin-top: 1.2rem; gap: 1rem; flex-wrap: wrap;">
+        <span class="skill-tag"><i class="fas fa-map-marker-alt"></i> Kazla, Rajshahi</span>
+        <span class="skill-tag"><i class="fas fa-university"></i> RUET · ETE</span>
+        <span class="skill-tag"><i class="fas fa-chalkboard-user"></i> Home Tutor</span>
+        <span class="skill-tag"><i class="fas fa-microphone-alt"></i> Debating Club</span>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title">Projects</h2>
-
-    <div class="grid">
-      <div class="card">Data Visualization using Python</div>
-      <div class="card">Responsive Portfolio Website</div>
+  <!-- Skills -->
+  <section id="skills" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title">Technical & Soft Arsenal</h2>
+      <div class="grid-2">
+        <div class="card">
+          <i class="fas fa-code"></i>
+          <h3>Languages & Web</h3>
+          <div><span class="skill-tag">HTML/CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">Python</span><span class="skill-tag">C++</span><span class="skill-tag">WordPress</span></div>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Data & Visualization</h3>
+          <div><span class="skill-tag">Pandas</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Seaborn</span><span class="skill-tag">Data Analysis</span><span class="skill-tag">Tableau basics</span></div>
+        </div>
+        <div class="card">
+          <i class="fas fa-microchip"></i>
+          <h3>Electronics & Tools</h3>
+          <div><span class="skill-tag">Circuit Design</span><span class="skill-tag">Arduino</span><span class="skill-tag">MATLAB</span><span class="skill-tag">LTspice</span></div>
+        </div>
+        <div class="card">
+          <i class="fas fa-users"></i>
+          <h3>Soft Skills</h3>
+          <div><span class="skill-tag">Debate & Public Speaking</span><span class="skill-tag">Problem Solving</span><span class="skill-tag">Team Leadership</span><span class="skill-tag">Content Creation</span></div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background: var(--bg-secondary);">
-  <div class="container">
-    <h2 class="section-title">Contact</h2>
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid-2">
+        <div class="card">
+          <i class="fas fa-chart-simple"></i>
+          <h3>Real‑life Data Visualization</h3>
+          <p>Built interactive dashboards using Python (Pandas, Matplotlib) to analyze real-world datasets — uncovering trends in energy consumption & environmental data. GitHub repo available.</p>
+          <div class="cert-badge"><i class="fab fa-python"></i> Python · Seaborn · Jupyter</div>
+        </div>
+        <div class="card">
+          <i class="fas fa-scroll"></i>
+          <h3>Research Review Poster Project</h3>
+          <p>Comprehensive literature review on 'Next-Gen Wireless Communication' presented as a scientific poster. Awarded recognition in CARSIT masterclass.</p>
+          <div class="cert-badge"><i class="fas fa-microscope"></i> Research · LaTeX · Canva</div>
+        </div>
+        <div class="card">
+          <i class="fas fa-globe"></i>
+          <h3>Portfolio Website (this one)</h3>
+          <p>Responsive, dark/light mode portfolio with modern glass morphism. Hosted on GitHub Pages — reflects my frontend creativity.</p>
+          <div class="cert-badge"><i class="fab fa-js"></i> HTML/CSS/JS · Flex/Grid</div>
+        </div>
+        <div class="card">
+          <i class="fab fa-wordpress"></i>
+          <h3>Full Website using WordPress</h3>
+          <p>Designed and deployed a complete functional website using WordPress (Coursera certified). Custom themes and plugins integration.</p>
+          <div class="cert-badge"><i class="fab fa-wordpress"></i> WordPress · Elementor</div>
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <a href="https://github.com/shahariar0007" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> See more on GitHub →</a>
+      </div>
+    </div>
+  </section>
 
-    <p>Email: shahariar0007@ruet.ac.bd</p>
-    <p>Location: Rajshahi, Bangladesh</p>
-  </div>
-</section>
+  <!-- Certifications -->
+  <section id="certificates" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title">Certifications & Achievements</h2>
+      <div class="grid-3">
+        <div class="card">
+          <i class="fas fa-pen-ruler"></i>
+          <h3>Research Paper Writing</h3>
+          <p>2-Day Masterclass + Poster Assignment · CARSIT (Apr 2026) · ID: R-262124</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-brain"></i>
+          <h3>Growth Mindset</h3>
+          <p>BYLCx · Jan 2026 — mindset & leadership training</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Data Analyst</h3>
+          <p>Brit College of Engineering & Technology · Dec 2025 · Data Visualization focus</p>
+        </div>
+        <div class="card">
+          <i class="fab fa-wordpress"></i>
+          <h3>Build Full Website using WordPress</h3>
+          <p>Coursera · Nov 2025 · Credential DXKKE56TXGUP</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-comments"></i>
+          <h3>Fresher's Workshop on Debating</h3>
+          <p>RUET Debating Club · Jan 2026 · Debate skills & argumentation</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience / Journey (YouTube, Tutor, Volunteering, Debating) -->
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Beyond Classroom</h2>
+      <div class="grid-2">
+        <div class="card">
+          <i class="fab fa-youtube"></i>
+          <h3>YouTuber @ Smarter Dotcom <span class="youtube-badge"><i class="fab fa-youtube"></i> Active</span></h3>
+          <p>Creating educational content on tech tutorials, data science basics, and engineering insights. Helping students learn smarter.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chalkboard-user"></i>
+          <h3>Home Tutor (STEM)</h3>
+          <p>Teaching Mathematics, Physics & Computer basics to high school students — building patience & communication skills.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-gavel"></i>
+          <h3>RUET Debating Club Member</h3>
+          <p>Active member since 2025; participated in internal workshops & inter-department debate competitions.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-hand-holding-heart"></i>
+          <h3>Volunteering</h3>
+          <p>Volunteered in RUET admission guidance program, blood donation campaigns, and tech awareness drives.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title">Let's Connect</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+        <div style="flex: 1; min-width: 240px;">
+          <p><i class="fas fa-envelope" style="color: var(--accent);"></i> <strong>Email:</strong> shahariar0007@ruet.ac.bd (preferred)</p>
+          <p><i class="fab fa-github"></i> <strong>GitHub:</strong> <a href="https://github.com/shahariar0007" target="_blank" style="color: var(--accent);">/shahariar0007</a></p>
+          <p><i class="fab fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/md-shaharia-hossen-a42419374" target="_blank" style="color: var(--accent);">Md. Shaharia Hossen</a></p>
+          <p><i class="fab fa-facebook"></i> <strong>Facebook:</strong> <a href="https://www.facebook.com/s.shahariar.10" target="_blank" style="color: var(--accent);">s.shahariar.10</a></p>
+          <p><i class="fab fa-youtube"></i> <strong>YouTube:</strong> <a href="https://youtube.com/@SmarterDotcom" target="_blank" style="color: var(--accent);">Smarter Dotcom</a></p>
+          <p><i class="fas fa-map-pin"></i> Kazla, Rajshahi, Bangladesh</p>
+        </div>
+        <div style="flex: 1; min-width: 240px;">
+          <p class="flex-center"><i class="fas fa-phone-alt"></i> +880 1321 479121 (WhatsApp)</p>
+          <p>Open for collaboration, research, or just a tech chat!</p>
+          <div class="btn-group" style="margin-top: 0.8rem;">
+            <a href="https://github.com/shahariar0007" class="btn btn-primary" style="background: #333; color: white;"><i class="fab fa-github"></i> Follow</a>
+            <a href="mailto:shahariar0007@ruet.ac.bd" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Write Email</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  © 2026 Md. Shaharia Hossen | RUET ETE
+  <p>© 2026 Md. Shaharia Hossen — ETE, RUET | Built with <i class="fas fa-heart" style="color: var(--accent);"></i> & modern web</p>
 </footer>
 
 <script>
-  const roles = ["ETE Student @ RUET", "Data Analyst", "YouTuber", "Problem Solver"];
-  let i = 0, j = 0;
-  const typed = document.getElementById("typed");
-
+  // Typing effect
+  const roles = ["ETE Undergrad @ RUET", "Data Analyst", "YouTuber: Smarter Dotcom", "Problem Solver", "Debater & Tutor"];
+  let index = 0, charIndex = 0;
+  const typedSpan = document.getElementById("typed");
   function type() {
-    if (j < roles[i].length) {
-      typed.textContent += roles[i][j++];
-      setTimeout(type, 80);
+    if (charIndex < roles[index].length) {
+      typedSpan.textContent += roles[index].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 90);
     } else {
-      setTimeout(erase, 1500);
+      setTimeout(erase, 2000);
     }
   }
-
   function erase() {
-    if (j > 0) {
-      typed.textContent = roles[i].slice(0, --j);
-      setTimeout(erase, 40);
+    if (charIndex > 0) {
+      typedSpan.textContent = roles[index].substring(0, charIndex-1);
+      charIndex--;
+      setTimeout(erase, 50);
     } else {
-      i = (i + 1) % roles.length;
+      index = (index + 1) % roles.length;
       setTimeout(type, 300);
     }
   }
-
   type();
-</script>
 
+  // Dark/Light mode toggle
+  const toggleBtn = document.getElementById('themeToggle');
+  const icon = toggleBtn.querySelector('i');
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'light') {
+    document.body.classList.add('light');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  }
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    if (document.body.classList.contains('light')) {
+      localStorage.setItem('theme', 'light');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    } else {
+      localStorage.setItem('theme', 'dark');
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    }
+  });
+
+  // Active link on scroll (simple)
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-links a");
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+  // smooth scroll for nav
+  document.querySelectorAll('.nav-links a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
 </body>
 </html>
